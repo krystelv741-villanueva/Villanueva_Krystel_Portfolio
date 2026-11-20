@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me // Ma. Krystel A. Villanueva</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts: Syne for headings, Inter for text, JetBrains Mono for labels -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Syne', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        paper: '#F8FAFC',
+                        ink: '#0A192F',
+                        slate: '#E2E8F0',
+                        accent: '#0055FF',
+                        darkPaper: '#060D1A',
+                        darkSlate: '#0F1C33',
+                        darkInk: '#F8FAFC',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body data-page="about" class="antialiased selection:bg-accent selection:text-white">
+
+    <!-- Paper grain texture -->
+    <div class="noise-overlay"></div>
+
+    <!-- Pop-up message -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-ink text-paper dark:bg-darkInk dark:text-darkPaper px-5 py-3.5 rounded-xl shadow-2xl border border-black/10 dark:border-white/15 flex items-center gap-3 font-mono text-xs">
+            <span class="w-2 h-2 rounded-full bg-accent animate-ping"></span>
+            <span id="toast-message">Done</span>
+        </div>
+    </div>
+
+    <!-- Top menu -->
+    <header class="sticky top-0 z-40 bg-paper/85 dark:bg-darkPaper/85 backdrop-blur-md border-b border-ink/10 dark:border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <a href="home.html" class="font-display font-extrabold text-xl tracking-tighter flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-sm bg-accent inline-block"></span>
+                    <span>KRYSTEL . V</span>
+                </a>
+                <span class="hidden lg:inline-block font-mono text-[11px] opacity-55 border-l border-ink/20 dark:border-white/20 pl-4" id="live-clock">
+                    POLA, ORIENTAL MINDORO // 00:00:00 PHT
+                </span>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-2 font-mono text-xs uppercase tracking-wider">
+                <a href="home.html" data-nav="home" class="px-3.5 py-2 rounded-xl transition-all">01. Home</a>
+                <a href="aboutme.html" data-nav="about" class="px-3.5 py-2 rounded-xl transition-all">02. About Me</a>
+                <a href="portfolio.html" data-nav="portfolio" class="px-3.5 py-2 rounded-xl transition-all">03. Portfolio</a>
+                <a href="contact.html" data-nav="contact" class="px-3.5 py-2 rounded-xl transition-all">04. Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button id="theme-toggle" aria-label="Toggle Porcelain/Midnight Theme" class="p-2.5 rounded-xl border border-ink/15 dark:border-white/15 hover:border-accent dark:hover:border-accent transition-colors font-mono text-xs flex items-center gap-2">
+                    <span id="theme-icon">◑</span>
+                    <span class="hidden sm:inline" id="theme-label">MIDNIGHT</span>
+                </button>
+                <a href="contact.html" class="px-4 py-2.5 rounded-xl bg-accent text-white font-mono text-xs uppercase tracking-wider hover:opacity-90 transition-opacity">
+                    Inquire
+                </a>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="md:hidden border-t border-ink/10 dark:border-white/10 px-4 py-2 flex items-center justify-between gap-1 overflow-x-auto font-mono text-[11px] uppercase tracking-wider">
+            <a href="home.html" data-nav="home" class="flex-1 py-2 px-2 rounded-lg text-center whitespace-nowrap transition-all">Home</a>
+            <a href="aboutme.html" data-nav="about" class="flex-1 py-2 px-2 rounded-lg text-center whitespace-nowrap transition-all">About Me</a>
+            <a href="portfolio.html" data-nav="portfolio" class="flex-1 py-2 px-2 rounded-lg text-center whitespace-nowrap transition-all">Portfolio</a>
+            <a href="contact.html" data-nav="contact" class="flex-1 py-2 px-2 rounded-lg text-center whitespace-nowrap transition-all">Contact</a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-8 min-h-[calc(100vh-9rem)]">
+        <!-- Bio and photo -->
+        <section class="py-12 sm:py-16 border-b border-ink/15 dark:border-white/15">
+            <div class="mb-10">
+                <span class="font-mono text-xs uppercase tracking-widest text-accent block mb-2">02 // ABOUT ME</span>
+                <h2 class="font-display font-extrabold text-4xl sm:text-6xl tracking-tight">About Me</h2>
+                <p class="text-base sm:text-lg opacity-75 mt-3 max-w-2xl">
+                    A closer look at where I come from, what I have studied, and what I have done so far.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                <!-- Photo column -->
+                <div class="min-w-0 lg:col-span-5 space-y-6">
+                    <div class="rounded-2xl border border-ink/15 dark:border-white/15 bg-slate/50 dark:bg-darkSlate/50 p-3">
+                        <div class="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-slate dark:bg-darkPaper border border-ink/10 dark:border-white/10">
+                            <img
+                                src="../photos/Krystel2.jpg"
+                                alt="Portrait of Ma. Krystel A. Villanueva"
+                                class="w-full h-full object-cover"
+                            >
+                            <div class="absolute bottom-3 left-3 px-3 py-1 rounded-lg bg-paper/90 dark:bg-darkPaper/90 backdrop-blur-sm font-mono text-[11px] border border-ink/10 dark:border-white/10">
+                                FIG. 01 // KRYSTEL
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Background, quick facts and education -->
+                <div class="min-w-0 lg:col-span-7 space-y-10">
+                    <div class="space-y-4">
+                        <span class="font-mono text-xs uppercase tracking-widest text-accent block">Background</span>
+                        <blockquote class="font-display font-bold text-2xl sm:text-3xl leading-tight break-words">
+                            Curiosity about how apps and websites work led me to Information Technology.
+                        </blockquote>
+                        <p class="text-base sm:text-lg opacity-85 leading-relaxed">
+                            I’m from Pola, Oriental Mindoro. I have always been curious about computers and how apps and websites work. That curiosity led me to choose Information Technology as my course.
+                        </p>
+                    </div>
+
+                    <!-- Quick Facts Strip -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-ink/15 dark:border-white/15">
+                        <div class="p-4 rounded-xl bg-slate/40 dark:bg-darkSlate/40 border border-ink/10 dark:border-white/10">
+                            <span class="font-mono text-[10px] uppercase tracking-widest opacity-50 block">Course</span>
+                            <span class="font-display font-bold text-lg">BS InfoTech</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate/40 dark:bg-darkSlate/40 border border-ink/10 dark:border-white/10">
+                            <span class="font-mono text-[10px] uppercase tracking-widest opacity-50 block">Hometown</span>
+                            <span class="font-display font-bold text-lg">Pola, Or. Mindoro</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate/40 dark:bg-darkSlate/40 border border-ink/10 dark:border-white/10">
+                            <span class="font-mono text-[10px] uppercase tracking-widest opacity-50 block">Career Goal</span>
+                            <span class="font-display font-bold text-lg">Web Developer</span>
+                        </div>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="space-y-4">
+                        <span class="font-mono text-xs uppercase tracking-widest opacity-60 block">Education</span>
+                        <div class="divide-y divide-ink/15 dark:divide-white/15 border-t border-b border-ink/15 dark:border-white/15">
+                            <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                <div class="min-w-0">
+                                    <h4 class="font-display font-bold text-lg">Bachelor of Science in Information Technology</h4>
+                                    <p class="text-sm opacity-75">Mindoro State University</p>
+                                </div>
+                                <span class="font-mono text-xs px-3 py-1 rounded-lg bg-accent text-white self-start sm:self-center shrink-0">2026 — PRESENT</span>
+                            </div>
+                            <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                <div class="min-w-0">
+                                    <h4 class="font-display font-bold text-lg">Senior High School (STEM Strand)</h4>
+                                    <p class="text-sm opacity-75">Pola Catholic School Inc.</p>
+                                </div>
+                                <span class="font-mono text-xs px-3 py-1 rounded-lg bg-slate dark:bg-darkSlate self-start sm:self-center shrink-0">SENIOR HIGH</span>
+                            </div>
+                            <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                <div class="min-w-0">
+                                    <h4 class="font-display font-bold text-lg">Junior High School</h4>
+                                    <p class="text-sm opacity-75">Pola Catholic School Inc.</p>
+                                </div>
+                                <span class="font-mono text-xs px-3 py-1 rounded-lg bg-slate dark:bg-darkSlate self-start sm:self-center shrink-0">JUNIOR HIGH</span>
+                            </div>
+                            <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                <div class="min-w-0">
+                                    <h4 class="font-display font-bold text-lg">Elementary School</h4>
+                                    <p class="text-sm opacity-75">Pola Central School</p>
+                                </div>
+                                <span class="font-mono text-xs px-3 py-1 rounded-lg bg-slate dark:bg-darkSlate self-start sm:self-center shrink-0">ELEMENTARY</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience and skills -->
+        <section class="py-12 sm:py-16">
+            <div class="mb-10">
+                <span class="font-mono text-xs uppercase tracking-widest text-accent block mb-2">EXPERIENCE & SKILLS</span>
+                <h3 class="font-display font-bold text-3xl sm:text-4xl tracking-tight">What I Have Done & Learned</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-6 sm:p-8 rounded-2xl border border-ink/15 dark:border-white/15 bg-slate/30 dark:bg-darkSlate/30 flex flex-col justify-between space-y-6 hover:border-accent transition-colors">
+                    <div>
+                        <div class="flex items-center justify-between font-mono text-xs opacity-50 mb-4">
+                            <span>RECORD // 01</span>
+                            <span>ACADEMIC & PRACTICAL</span>
+                        </div>
+                        <h4 class="font-display font-bold text-2xl mb-4">Experience</h4>
+                        <ul class="space-y-3 text-sm sm:text-base opacity-85">
+                            <li class="flex items-start gap-3">
+                                <span class="font-mono text-accent font-bold mt-0.5">01.</span>
+                                <span>Built a group capstone project during senior high school.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="font-mono text-accent font-bold mt-0.5">02.</span>
+                                <span>Joined school programming and IT activities.</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="font-mono text-accent font-bold mt-0.5">03.</span>
+                                <span>Practiced HTML, CSS, and basic programming through class projects.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-ink/10 dark:border-white/10 font-mono text-xs opacity-70">
+                        Mindoro State University & Pola Catholic School Inc.
+                    </div>
+                </div>
+
+                <div class="p-6 sm:p-8 rounded-2xl border border-ink/15 dark:border-white/15 bg-slate/30 dark:bg-darkSlate/30 flex flex-col justify-between space-y-6 hover:border-accent transition-colors">
+                    <div>
+                        <div class="flex items-center justify-between font-mono text-xs opacity-50 mb-4">
+                            <span>RECORD // 02</span>
+                            <span>TECHNICAL & INTERPERSONAL</span>
+                        </div>
+                        <h4 class="font-display font-bold text-2xl mb-4">Skills & Strengths</h4>
+                        <div class="space-y-4">
+                            <div class="p-3.5 rounded-xl bg-paper/70 dark:bg-darkPaper/70 border border-ink/10 dark:border-white/10">
+                                <div class="font-display font-bold text-base">HTML and CSS</div>
+                                <p class="text-xs opacity-75 mt-0.5">Building semantic page layouts and clean, readable stylesheets.</p>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-paper/70 dark:bg-darkPaper/70 border border-ink/10 dark:border-white/10">
+                                <div class="font-display font-bold text-base">Basic C and C# Programming</div>
+                                <p class="text-xs opacity-75 mt-0.5">Writing structured console programs with loops, arrays, and conditions.</p>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-paper/70 dark:bg-darkPaper/70 border border-ink/10 dark:border-white/10">
+                                <div class="font-display font-bold text-base">Teamwork and Problem Solving</div>
+                                <p class="text-xs opacity-75 mt-0.5">Collaborating on planning, interface design, and iterative testing.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-ink/15 dark:border-white/15 py-8 mt-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs opacity-60">
+            <div>© <span id="year"></span> MA. KRYSTEL A. VILLANUEVA. ALL RIGHTS RESERVED.</div>
+            <div>POLA, ORIENTAL MINDORO • BSIT PORTFOLIO</div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
